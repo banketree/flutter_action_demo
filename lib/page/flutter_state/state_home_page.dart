@@ -2,23 +2,21 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../dart_page/dart_presenter.dart';
-import 'plugins/plugins_presenter.dart';
-import 'widgets/widgets_presenter.dart';
+import 'state_presenter.dart';
 
-class FlutterWidgetsHome extends StatefulWidget {
-  const FlutterWidgetsHome({Key? key}) : super(key: key);
+class StateHomePage extends StatefulWidget {
+  const StateHomePage({Key? key}) : super(key: key);
 
   @override
-  FlutterWidgetsHomeState createState() => FlutterWidgetsHomeState();
+  StateHomePageState createState() => StateHomePageState();
 }
 
-class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
+class StateHomePageState extends State<StateHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("功能列表"),
+        title: const Text("flutter 状态知识点"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -27,11 +25,10 @@ class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              _buildLayoutList("Widget 知识点", widgetList, _onFunctionCall),
               const SizedBox(
                 height: 10,
               ),
-              _buildLayoutList("Plugin 知识点", flutterList, _onFunctionCall),
+              _buildLayoutList("", stateList, _onFunctionCall),
             ],
           ),
         ),
@@ -44,11 +41,8 @@ class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
     );
   }
 
-  _onFunctionCall(BuildContext context, String name) {
-    if (handleDart(context, name)) {
-    } else if (handleWidget(context, name)) {
-    } else if (handleFlutter(context, name)) {}
-  }
+  _onFunctionCall(BuildContext context, String name) =>
+      handleState(context, name);
 
   _buildLayoutList(String headerName, List<String> funList,
       Function(BuildContext context, String name) onCallBack) {

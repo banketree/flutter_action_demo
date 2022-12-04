@@ -3,22 +3,20 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../dart_page/dart_presenter.dart';
-import 'plugins/plugins_presenter.dart';
-import 'widgets/widgets_presenter.dart';
 
-class FlutterWidgetsHome extends StatefulWidget {
-  const FlutterWidgetsHome({Key? key}) : super(key: key);
+class DartHomePage extends StatefulWidget {
+  const DartHomePage({Key? key}) : super(key: key);
 
   @override
-  FlutterWidgetsHomeState createState() => FlutterWidgetsHomeState();
+  DartHomePageState createState() => DartHomePageState();
 }
 
-class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
+class DartHomePageState extends State<DartHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("功能列表"),
+        title: const Text("dart 知识点"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -27,11 +25,10 @@ class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              _buildLayoutList("Widget 知识点", widgetList, _onFunctionCall),
               const SizedBox(
                 height: 10,
               ),
-              _buildLayoutList("Plugin 知识点", flutterList, _onFunctionCall),
+              _buildLayoutList("", dartList, _onFunctionCall),
             ],
           ),
         ),
@@ -44,11 +41,8 @@ class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
     );
   }
 
-  _onFunctionCall(BuildContext context, String name) {
-    if (handleDart(context, name)) {
-    } else if (handleWidget(context, name)) {
-    } else if (handleFlutter(context, name)) {}
-  }
+  _onFunctionCall(BuildContext context, String name) =>
+      handleDart(context, name);
 
   _buildLayoutList(String headerName, List<String> funList,
       Function(BuildContext context, String name) onCallBack) {

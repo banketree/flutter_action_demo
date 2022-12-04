@@ -1,24 +1,30 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:study_plan_flutter/page/flutter_widgets_page/flutter_widgets_home_page.dart';
 
-import '../dart_page/dart_presenter.dart';
-import 'plugins/plugins_presenter.dart';
-import 'widgets/widgets_presenter.dart';
+import 'dart_page/dart_home_page.dart';
+import 'flutter_state/state_home_page.dart';
 
-class FlutterWidgetsHome extends StatefulWidget {
-  const FlutterWidgetsHome({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  FlutterWidgetsHomeState createState() => FlutterWidgetsHomeState();
+  HomePageState createState() => HomePageState();
 }
 
-class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
+var dataList = [
+  "dart知识",
+  "widget知识",
+  "state知识",
+];
+
+class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("功能列表"),
+        title: const Text("奋斗不息"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -27,11 +33,7 @@ class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              _buildLayoutList("Widget 知识点", widgetList, _onFunctionCall),
-              const SizedBox(
-                height: 10,
-              ),
-              _buildLayoutList("Plugin 知识点", flutterList, _onFunctionCall),
+              _buildLayoutList("学习列表", dataList, _onFunctionCall),
             ],
           ),
         ),
@@ -45,9 +47,22 @@ class FlutterWidgetsHomeState extends State<FlutterWidgetsHome> {
   }
 
   _onFunctionCall(BuildContext context, String name) {
-    if (handleDart(context, name)) {
-    } else if (handleWidget(context, name)) {
-    } else if (handleFlutter(context, name)) {}
+    if (name == "dart知识") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const DartHomePage()),
+      );
+    } else if (name == "widget知识") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const FlutterWidgetsHome()),
+      );
+    } else if (name == "state知识") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const StateHomePage()),
+      );
+    }
   }
 
   _buildLayoutList(String headerName, List<String> funList,

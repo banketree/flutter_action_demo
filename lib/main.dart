@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:study_plan_flutter/page/flutter_home_page.dart';
 
 import 'page/flutter_widgets_page/flutter_widgets_home_page.dart';
 import 'res/app_theme.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       // UI 主题颜色
       theme: AppTheme.getAppDefault(),
       // 默认界面
-      home: const FlutterWidgetsHome(),
+      home: const HomePage(),
       //应用的顶级导航表格，这个是多页面应用用来控制页面跳转的，类似于网页的网址
       //routes: ,
       //第一个显示的路由名字，默认值为 Navigator.defaultRouteName
